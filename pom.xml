@@ -136,7 +136,7 @@
                     <include name="twitter-bootstrap-*/fonts/*.*" />
                   </patternset>
                   <mapper>
-                    <regexpmapper from="twitter-bootstrap-[a-f0-9]*/(.*)" to="bootstrap/\1" />
+                    <regexpmapper from="twitter-bootstrap-[a-f0-9]*/(.*)" to="\1" />
                   </mapper>
                 </unzip>
               </target>
