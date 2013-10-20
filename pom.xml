@@ -25,7 +25,7 @@
 
   <groupId>org.jszip.redist</groupId>
   <artifactId>bootstrap</artifactId>
-  <version>2.3.2-SNAPSHOT</version>
+  <version>3.0.0-rc1-SNAPSHOT</version>
   <packaging>jszip</packaging>
 
   <name>Bootstrap</name>
@@ -39,7 +39,7 @@
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
-      <url>https://raw.github.com/twitter/bootstrap/v${project.version}/LICENSE</url>
+      <url>https://raw.github.com/twbs/bootstrap/v${project.version}/LICENSE</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -92,7 +92,7 @@
             <configuration>
               <name>bootstrap-version</name>
               <value>${project.version}</value>
-              <regex>^([\d\.]+)(-\d+-)?(-SNAPSHOT)?$</regex>
+              <regex>^(.+)?(-SNAPSHOT)$</regex>
               <replacement>$1</replacement>
               <failIfNoMatch>false</failIfNoMatch>
             </configuration>
@@ -110,8 +110,8 @@
               <goal>download-single</goal>
             </goals>
             <configuration>
-              <url>https://github.com/twitter/bootstrap/zipball</url>
-              <fromFile>v${bootstrap-version}</fromFile>
+              <url>https://github.com/twbs/bootstrap/archive</url>
+              <fromFile>v${bootstrap-version}.zip</fromFile>
               <toFile>${project.build.directory}/antrun/bootstrap.zip</toFile>
             </configuration>
           </execution>
@@ -130,13 +130,13 @@
               <target>
                 <unzip src="${project.build.directory}/antrun/bootstrap.zip" dest="${project.build.outputDirectory}/">
                   <patternset>
-                    <include name="twitter-bootstrap-*/less/**/*.less" />
-                    <include name="twitter-bootstrap-*/js/*.js" />
-                    <include name="twitter-bootstrap-*/img/*.*" />
-                    <include name="twitter-bootstrap-*/fonts/*.*" />
+                    <include name="bootstrap-*/less/**/*.less" />
+                    <include name="bootstrap-*/js/*.js" />
+                    <include name="bootstrap-*/img/*.*" />
+                    <include name="bootstrap-*/fonts/*.*" />
                   </patternset>
                   <mapper>
-                    <regexpmapper from="twitter-bootstrap-[a-f0-9]*/(.*)" to="\1" />
+                    <regexpmapper from="bootstrap-[a-z0-9-\.]*/(.*)" to="\1" />
                   </mapper>
                 </unzip>
               </target>
